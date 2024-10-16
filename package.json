@@ -1,0 +1,53 @@
+{
+  "name": "@decky.fx/node-repl",
+  "version": "1.0.0",
+  "description": "A Zero Dependancy NodeJS REPL",
+  "main": "dist/index.js",
+  "os": [
+    "linux"
+  ],
+  "cpu": [
+    "x64"
+  ],
+  "engines": {
+    "npm": ">=10.8.1",
+    "node": "Please use yarn",
+    "yarn": "^4.5.0"
+  },
+  "packageManager": "yarn@4.5.0",
+  "engineStrict": true,
+  "scripts": {
+    "build": "rimraf ./dist && tsc",
+    "dev": "ts-node-dev --poll example/index.ts",
+    "push": "npm publish --access public",
+    "down": "npm unpublish @decky.fx/node-server@1.0.4-b",
+    "pub": "yarn build && yarn push"
+  },
+  "files": [
+    "dist/**/*"
+  ],
+  "keywords": [
+    "sea"
+  ],
+  "author": "Decky Fx <deckyfx@gmail.com>",
+  "license": "ISC",
+  "homepage": "https://github.com/deckyfx/sea-builder#readme",
+  "bugs": {
+    "url": "https://github.com/deckyfx/sea-builder/issues",
+    "email": "deckyfx@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/deckyfx/sea-builder.git"
+  },
+  "devDependencies": {
+    "@types/node": "^22.5.4",
+    "rimraf": "^6.0.1",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.5.4"
+  },
+  "types": "./dist/index.d.ts",
+  "directories": {
+    "example": "example"
+  }
+}
