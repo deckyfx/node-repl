@@ -1,4 +1,4 @@
-import { createInterface } from "node:readline";
+import { createInterface, Interface, ReadLineOptions } from "node:readline";
 
 import { AsyncLocalStorage } from "node:async_hooks";
 
@@ -81,13 +81,22 @@ function parseArgs(input: string): {
   return { flags, args };
 }
 
-export default async function repl() {
+function prompt(prompt: string = "repl> ") {
+  process.stdout.write(prompt);
+}
+
+export default async function repl(
+  options: Partial<ReadLineOptions> = {},
+  runner?: (rl: Interface) => Promise<void>
+) {
+  console.log("Press Ctrl+C to exit.");
+
   const rl = createInterface({
     input: process.stdin,
     output: process.stdout,
   });
 
-  console.log("Press Ctrl+C to exit.");
+  prompt(options.prompt);
 
   rl.on("line", (line) => {
     const [command, ...raw_args] = line.split(/\s/gi);
@@ -101,6 +110,7 @@ export default async function repl() {
 
     if (!match) {
       console.log(`Command "${line}" unhandled`);
+      prompt(options.prompt);
       return;
     }
 
@@ -114,6 +124,7 @@ export default async function repl() {
             console.error(error);
           }
           logWithId("Done");
+          prompt(options.prompt);
         });
       });
     }
@@ -123,4 +134,8 @@ export default async function repl() {
     console.log("\nExiting...");
     process.exit(0);
   });
+
+  await runner?.(rl);
+
+  return rl;
 }

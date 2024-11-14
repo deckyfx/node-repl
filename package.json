@@ -1,6 +1,6 @@
 {
   "name": "@decky.fx/node-repl",
-  "version": "1.0.0",
+  "version": "1.0.0-a",
   "description": "A Zero Dependancy NodeJS REPL",
   "main": "dist/index.js",
   "os": [
@@ -20,14 +20,14 @@
     "build": "rimraf ./dist && tsc",
     "dev": "ts-node-dev --poll example/index.ts",
     "push": "npm publish --access public",
-    "down": "npm unpublish @decky.fx/node-server@1.0.4-b",
+    "down": "npm unpublish @decky.fx/node-repl@1.0.0",
     "pub": "yarn build && yarn push"
   },
   "files": [
     "dist/**/*"
   ],
   "keywords": [
-    "sea"
+    "repl"
   ],
   "author": "Decky Fx <deckyfx@gmail.com>",
   "license": "ISC",

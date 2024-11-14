@@ -18,7 +18,7 @@ This is a simple nodejs server, it has zero dependancy!
 
 ## Latest Version
 
-1.0.0
+1.0.a
 
 ## Usage
 
